@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -77,6 +78,9 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.listMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.itemMoveToGroup = new System.Windows.Forms.ToolStripMenuItem();
+            this.newGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.picQRcode)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.ServerGroupBox.SuspendLayout();
@@ -87,6 +91,7 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.listMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -145,6 +150,7 @@
             this.lstServers.Size = new System.Drawing.Size(250, 292);
             this.lstServers.TabIndex = 0;
             this.lstServers.SelectedIndexChanged += new System.EventHandler(this.ServersListBox_SelectedIndexChanged);
+            this.lstServers.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LstServers_MouseDown);
             // 
             // tableLayoutPanel2
             // 
@@ -773,6 +779,29 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.OKButton_Click);
             // 
+            // listMenuStrip
+            // 
+            this.listMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemMoveToGroup});
+            this.listMenuStrip.Name = "listMenuStrip";
+            this.listMenuStrip.Size = new System.Drawing.Size(181, 48);
+            this.listMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ListMenuStrip_Opening);
+            // 
+            // itemMoveToGroup
+            // 
+            this.itemMoveToGroup.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newGroupToolStripMenuItem});
+            this.itemMoveToGroup.Name = "itemMoveToGroup";
+            this.itemMoveToGroup.Size = new System.Drawing.Size(180, 22);
+            this.itemMoveToGroup.Text = "Move to group";
+            // 
+            // newGroupToolStripMenuItem
+            // 
+            this.newGroupToolStripMenuItem.Name = "newGroupToolStripMenuItem";
+            this.newGroupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newGroupToolStripMenuItem.Text = "New group";
+            this.newGroupToolStripMenuItem.Click += new System.EventHandler(this.NewGroupToolStripMenuItem_Click);
+            // 
             // ConfigForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -807,6 +836,7 @@
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.listMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -862,6 +892,9 @@
         private System.Windows.Forms.Label lblProtocolParam;
         private System.Windows.Forms.TextBox txtProtocolParam;
         private System.Windows.Forms.CheckBox chkIP;
+        private System.Windows.Forms.ContextMenuStrip listMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem itemMoveToGroup;
+        private System.Windows.Forms.ToolStripMenuItem newGroupToolStripMenuItem;
     }
 }
 

@@ -118,6 +118,7 @@ namespace Shadowsocks.Model
         public bool randomInGroup;
         public int TTL;
         public int connectTimeout;
+        public bool remainCustomGroups;
 
         public int proxyRuleMode;
 
@@ -423,6 +424,7 @@ namespace Shadowsocks.Model
             reconnectTimes = config.reconnectTimes;
             balanceAlgorithm = config.balanceAlgorithm;
             randomInGroup = config.randomInGroup;
+            remainCustomGroups = config.remainCustomGroups;
             TTL = config.TTL;
             connectTimeout = config.connectTimeout;
             dnsServer = config.dnsServer;

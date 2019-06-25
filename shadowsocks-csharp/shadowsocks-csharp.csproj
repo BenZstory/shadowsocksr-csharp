@@ -210,6 +210,12 @@
       <DependentUpon>LogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MenuViewController.cs" />
+    <Compile Include="View\NewGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NewGroup.designer.cs">
+      <DependentUpon>NewGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\PortSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\LogForm.resx">
       <DependentUpon>LogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\NewGroup.resx">
+      <DependentUpon>NewGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\PortSettingsForm.resx">
       <DependentUpon>PortSettingsForm.cs</DependentUpon>

@@ -88,6 +88,7 @@ namespace Shadowsocks.View
             chkAutoBan.Text = I18N.GetString("AutoBan");
             lblLogging.Text = I18N.GetString("Logging");
             chkLogEnable.Text = I18N.GetString("Enable Log");
+            chkRemainCustomGroup.Text = I18N.GetString("Remain custom groups");
 
             gbxSocks5Proxy.Text = I18N.GetString(gbxSocks5Proxy.Text);
             chkPacProxy.Text = I18N.GetString(chkPacProxy.Text);
@@ -165,6 +166,7 @@ namespace Shadowsocks.View
                 _modifiedConfiguration.autoBan = chkAutoBan.Checked;
                 _modifiedConfiguration.checkSwitchAutoCloseAll = chkSwitchAutoCloseAll.Checked;
                 _modifiedConfiguration.logEnable = chkLogEnable.Checked;
+                _modifiedConfiguration.remainCustomGroups = chkRemainCustomGroup.Checked;
 
                 return ret;
             }
@@ -194,6 +196,7 @@ namespace Shadowsocks.View
             }
             cmbBalance.SelectedIndex = selectedIndex;
             chkBalanceInGroup.Checked = _modifiedConfiguration.randomInGroup;
+            chkRemainCustomGroup.Checked = _modifiedConfiguration.remainCustomGroups;
             nudTTL.Value = _modifiedConfiguration.TTL;
             nudTimeout.Value = _modifiedConfiguration.connectTimeout;
             txtDNS.Text = _modifiedConfiguration.dnsServer;

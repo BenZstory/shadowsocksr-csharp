@@ -119,6 +119,8 @@ namespace Shadowsocks.View
             }
 
             UpdateServersListBoxTopIndex();
+
+            lstServers.ContextMenuStrip = listMenuStrip;
         }
 
         private Font CreateFont()
@@ -162,6 +164,9 @@ namespace Shadowsocks.View
             lblObfs.Text = mark_str + I18N.GetString(lblObfs.Text);
             lblRemarks.Text = I18N.GetString("Remarks");
             lblGroup.Text = I18N.GetString("Group");
+
+            itemMoveToGroup.Text = I18N.GetString("Move to group");
+            newGroupToolStripMenuItem.Text = I18N.GetString("New group");
 
             chkAdvSetting.Text = I18N.GetString(chkAdvSetting.Text);
             lblTcpOverUdp.Text = I18N.GetString(lblTcpOverUdp.Text);
@@ -810,6 +815,76 @@ namespace Shadowsocks.View
             else
             {
                 txtIP.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void LstServers_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int clickIndex = lstServers.IndexFromPoint(e.Location);
+                if (clickIndex < 0) return;
+                if (!lstServers.SelectedIndices.Contains(clickIndex))
+                {
+                    lstServers.SelectedIndices.Clear();
+                    lstServers.SelectedIndices.Add(clickIndex);
+                }
+                lstServers.SelectedIndex = clickIndex;
+            }
+        }
+
+        private void ListMenuStrip_Opening(object sender, CancelEventArgs e)
+        {
+            itemMoveToGroup.DropDownItems.Clear();
+            List<String> groups = new List<string> { };
+            for (int i = 0; i < _modifiedConfiguration.configs.Count; i++) {
+                Server server = _modifiedConfiguration.configs[i];
+                if (!string.IsNullOrEmpty(server.group) && !groups.Contains(server.group))
+                {
+                    groups.Add(server.group);
+                }
+            }
+
+            for (int i=0; i<groups.Count; i++)
+            {
+                itemMoveToGroup.DropDownItems.Add(groups[i]);
+                itemMoveToGroup.DropDownItems[i].Click += MoveGroupItem_Click;
+            }
+
+            itemMoveToGroup.DropDownItems.Add(newGroupToolStripMenuItem);
+        }
+
+        private void MoveGroupItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem groupItem = (ToolStripMenuItem)sender;
+            String newGroup = groupItem.Text;
+            var serverItems = lstServers.SelectedIndices;
+            if (serverItems.Count <= 0) return;
+
+            foreach (int index in serverItems)
+            {
+                _modifiedConfiguration.configs[index].group = newGroup;
+            }
+            txtGroup.Text = newGroup;
+            LoadConfiguration(_modifiedConfiguration);
+        }
+
+        private void NewGroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formNewGroup = new NewGroup();
+            formNewGroup.ShowDialog();
+            if (formNewGroup.DialogResult == DialogResult.OK)
+            {
+                String newGroup = formNewGroup.StrGroupName;
+                var serverItems = lstServers.SelectedIndices;
+                if (serverItems.Count <= 0) return;
+
+                foreach (int index in serverItems)
+                {
+                    _modifiedConfiguration.configs[index].group = newGroup;
+                }
+                txtGroup.Text = newGroup;
+                LoadConfiguration(_modifiedConfiguration);
             }
         }
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.chkLogEnable = new System.Windows.Forms.CheckBox();
@@ -79,6 +80,8 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.chkRemainCustomGroup = new System.Windows.Forms.CheckBox();
+            this.toolTipSettings = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.gbxSocks5Proxy.SuspendLayout();
@@ -133,9 +136,10 @@
             this.tableLayoutPanel2.Controls.Add(this.chkAutoStartup, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.chkBalanceInGroup, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.chkSwitchAutoCloseAll, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.chkRemainCustomGroup, 1, 7);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(346, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 7;
+            this.tableLayoutPanel2.RowCount = 8;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -143,7 +147,8 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(250, 127);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(250, 147);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // chkLogEnable
@@ -799,6 +804,19 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.OKButton_Click);
             // 
+            // chkRemainCustomGroup
+            // 
+            this.chkRemainCustomGroup.AutoSize = true;
+            this.chkRemainCustomGroup.Checked = true;
+            this.chkRemainCustomGroup.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkRemainCustomGroup.Location = new System.Drawing.Point(103, 130);
+            this.chkRemainCustomGroup.Name = "chkRemainCustomGroup";
+            this.chkRemainCustomGroup.Size = new System.Drawing.Size(144, 14);
+            this.chkRemainCustomGroup.TabIndex = 19;
+            this.chkRemainCustomGroup.Text = "Remain custom groups";
+            this.toolTipSettings.SetToolTip(this.chkRemainCustomGroup, "Remain your customized group settings when updating subscribes");
+            this.chkRemainCustomGroup.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -894,5 +912,7 @@
         private System.Windows.Forms.TextBox txtLocalDNS;
         private System.Windows.Forms.CheckBox chkLogEnable;
         private System.Windows.Forms.Label lblLogging;
+        private System.Windows.Forms.CheckBox chkRemainCustomGroup;
+        private System.Windows.Forms.ToolTip toolTipSettings;
     }
 }

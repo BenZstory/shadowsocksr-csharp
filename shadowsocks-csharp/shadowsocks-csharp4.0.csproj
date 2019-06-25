@@ -166,6 +166,12 @@
     <Compile Include="Model\Configuration.cs" />
     <Compile Include="Model\ServerSelectStrategy.cs" />
     <Compile Include="Model\ServerSpeedLog.cs" />
+    <Compile Include="View\NewGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NewGroup.Designer.cs">
+      <DependentUpon>NewGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Obfs\Auth.cs" />
     <Compile Include="Obfs\AuthAkarin.cs" />
     <Compile Include="Obfs\AuthChain.cs" />
@@ -248,6 +254,9 @@
     <Compile Include="View\SubscribeForm.designer.cs">
       <DependentUpon>SubscribeForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\NewGroup.resx">
+      <DependentUpon>NewGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
       <SubType>Designer</SubType>

@@ -479,9 +479,16 @@ namespace Shadowsocks.View
                         {
                             for (int i = config.configs.Count - 1; i >= 0; --i)
                             {
-                                if (lastGroup == config.configs[i].group)
+                                if (config.remainCustomGroups)
                                 {
                                     old_servers[config.configs[i].id] = config.configs[i];
+                                }
+                                else
+                                {
+                                    if (lastGroup == config.configs[i].group)
+                                    {
+                                        old_servers[config.configs[i].id] = config.configs[i];
+                                    }
                                 }
                             }
                         }
@@ -510,8 +517,11 @@ namespace Shadowsocks.View
                                         if (server.isMatchServer(pair.Value))
                                         {
                                             match = true;
-                                            old_servers.Remove(pair.Key);
-                                            pair.Value.CopyServerInfo(server);
+                                            old_servers.Remove(pair.Key); // if match, server info is updated and useful, so not old and wont be deleted later
+                                            if (!config.remainCustomGroups) 
+                                            {
+                                                pair.Value.CopyServerInfo(server); // use subscribe source remark and group infos
+                                            }
                                             ++count;
                                             break;
                                         }

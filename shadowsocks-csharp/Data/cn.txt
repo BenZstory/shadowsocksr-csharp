@@ -77,6 +77,11 @@ Encryption=加密
 Remarks=备注
 Group=群组名
 
+Move to group=移到群组
+New group=新的群组
+
+Assign to new group=移动到新的群组
+
 Adv. Setting=高级选项
 Obfs UDP=混淆UDP协议
 NOT all server support belows=以下选项不是所有服务端都支持
@@ -104,6 +109,8 @@ Balance in group=所选组切换
 AutoBan=自动禁用出错服务器
 Logging=日志记录
 Enable Log=开启日志
+Remain custom groups=保留分组信息
+TIP Remain custom groups=当更新订阅的时候，维持之前自定义的服务器名和分组信息
 
 Remote proxy=二级（前置）代理
 Proxy On=开启代理
